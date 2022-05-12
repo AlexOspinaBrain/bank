@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('dashboard');
 });
 
 Route::middleware([
@@ -25,4 +25,16 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::get('/transPropias', function () {
+        return view('propias');
+    })->name('propias');
+
+    Route::get('/transTerceros', function () {
+        return view('dashboard');
+    })->name('terceros');
+    
+    Route::get('/getTransacciones', function () {
+        return view('dashboard');
+    })->name('tus-transacciones');    
 });
