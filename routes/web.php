@@ -39,7 +39,14 @@ Route::middleware([
         [AdminController::class, 'transaccionTerceros']
         )->name('terceros');
     
-    Route::get('getTransacciones', function () {
-        return view('dashboard');
-    })->name('tus-transacciones');    
+    Route::get('get-transacciones', 
+        [AdminController::class, 'getTransacciones']
+    )->name('transacciones');    
+});
+
+/**
+ * Manage inexistent routes
+ */
+Route::fallback(function () {
+    return redirect('dashboard');
 });

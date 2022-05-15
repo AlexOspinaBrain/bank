@@ -7,7 +7,7 @@ use App\Models\Cuentapropia;
 use App\Models\Cuentatercero;
 use App\Models\Transaccion;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -54,6 +54,27 @@ class AdminController extends Controller
 
         return view('terceros',['cuentas' => $cuentas, 'terceros' => $terceros, 'message' => $message]);
 
+    }
+
+    public function getTransacciones() {
+
+        $transacciones = DB::table('users')->where('users.id','=', auth()->id())
+            ->join('transaccions', 'users.id', '=', 'transaccions.user_id')
+            ->join('cuentapropias', 'transaccions.cuentapropias_sale_id', 
+                    '=', 'cuentapropias.id')
+            ->leftJoin('cuentapropias as cp', 'transaccions.cuentapropias_entra_id', 
+                    '=', 'cp.id')
+            ->leftJoin('cuentaterceros as ct', 'transaccions.cuentaterceros_entra_id', 
+                    '=', 'ct.id')
+            ->select('transaccions.id', 'transaccions.created_at', 
+                'cuentapropias.nombre as nombreorigen',
+                'cp.nombre as nombredestinoo',
+                'ct.nombre as nombredestinot',
+                'transaccions.monto')
+            ->orderByRaw('transaccions.id DESC')
+            ->get();
+
+        return view('transacciones',['transacciones' => $transacciones]);
     }
     
 }
