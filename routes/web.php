@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,19 +23,23 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
+    Route::get('dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
 
-    Route::get('/transPropias', function () {
-        return view('propias');
-    })->name('propias');
+    Route::get('trans-propias',
+        [AdminController::class, 'transaccionPropias']
+        )->name('propias');
 
-    Route::get('/transTerceros', function () {
-        return view('dashboard');
-    })->name('terceros');
+    Route::post('transaccion-crea', 
+        [AdminController::class, 'storeTransaccion']
+        )->name('transaccion');
+
+    Route::get('trans-terceros', 
+        [AdminController::class, 'transaccionTerceros']
+        )->name('terceros');
     
-    Route::get('/getTransacciones', function () {
+    Route::get('getTransacciones', function () {
         return view('dashboard');
     })->name('tus-transacciones');    
 });
