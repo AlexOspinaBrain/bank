@@ -37,7 +37,7 @@ class TransaccionPostRequest extends FormRequest
                 new ValidaSi(request()->cuentapropias_entra_id,''),
             ],
 
-            'monto'=>['required','numeric',
+            'monto'=>['required','min:1','numeric',
                     new ValidaSaldo(request()->cuentapropias_sale_id),
                 ],
 

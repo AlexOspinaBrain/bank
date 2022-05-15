@@ -13,7 +13,9 @@ class AdminController extends Controller
 {
     public function transaccionPropias(){
         
-        $cuentas = Cuentapropia::where('estado','=',true)->get();
+        $cuentas = Cuentapropia::where('estado','=',true)
+            ->where('user_id','=',auth()->id())
+            ->get();
         
         $message = request()->input('message') ?? '';
 
@@ -32,7 +34,7 @@ class AdminController extends Controller
         $transaccion->user_id = auth()->id();
  
         if ($transaccion->save()) {
-                $message = 'Transacción Realizada con exito!';
+                $message = "Transacción con código $transaccion->id, Realizada con exito!";
             } else {
                 $message = 'Transacción con Error, intente de nuevo.';
             }
@@ -47,8 +49,12 @@ class AdminController extends Controller
 
     public function transaccionTerceros(){
         
-        $cuentas = Cuentapropia::where('estado','=',true)->get();
-        $terceros = Cuentatercero::where('estado','=',true)->get();
+        $cuentas = Cuentapropia::where('estado','=',true)
+            ->where('user_id','=',auth()->id())
+            ->get();
+        $terceros = Cuentatercero::where('estado','=',true)
+            ->where('user_id','=',auth()->id())
+            ->get();
         
         $message = request()->input('message') ?? '';
 

@@ -20,6 +20,11 @@
             </div>
 
             <div class="mt-4">
+                <x-jet-label for="identificacion" value="{{ __('Identificación') }}" />
+                <x-jet-input id="identificacion" class="block mt-1 w-full" type="number" name="identificacion" :value="old('identificacion')" required />
+            </div>
+
+            <div class="mt-4">
                 <x-jet-label for="password" value="{{ __('Password') }}" />
                 <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
             </div>
