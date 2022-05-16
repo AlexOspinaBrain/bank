@@ -30,7 +30,7 @@
             <select name="cuentapropias_sale_id" class="form-select" aria-label="Default select example" value= {{ old('cuentapropias_sale_id') }}>
                 <option>Seleccionar</option>
                 @foreach ($cuentas as $cuenta)
-                    <option value="{{$cuenta->id}}"> {{ $cuenta->nombre }}</option> 
+                    <option value="{{$cuenta->id}}" {{ old("cuentapropias_sale_id") == $cuenta->id ? "selected":"" }}> {{ $cuenta->nombre }}</option> 
                 @endforeach
               </select>
         </div>
@@ -39,7 +39,7 @@
             <select  name="cuentaterceros_entra_id" class="form-select" aria-label="Default select example" value= {{ old('cuentaterceros_entra_id') }} >
                 <option>Seleccionar</option>
                 @foreach ($terceros as $tercero)
-                    <option value="{{$tercero->id}}"> {{ $tercero->nombre }}</option> 
+                    <option value="{{$tercero->id}}" {{ old("cuentaterceros_entra_id") == $cuenta->id ? "selected":"" }}> {{ $tercero->nombre }}</option> 
                 @endforeach
               </select>
         </div>
