@@ -32,14 +32,12 @@
 <p>Puede ingresar con el usuario 80059462 password 1234</p>
 
 
-    <br>
-
     
-<h3>Acá lo puede ver en acción, http://alexdeploys.info/api/adduser</h3>
+<h3>Acá lo puede ver en acción, http://alexdeploys.info</h3>
 <h4>Este ejemplo esta desplegado en Google Cloud en una VM Ubuntu con PHP7.4 FCM, Nginx y una instancia MySQL</h4>
 
 <br>
-    <br>
+
 
 <h3>Dudas con laravel? revise lo siguiente :</h3>
 
