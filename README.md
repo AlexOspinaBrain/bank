@@ -33,9 +33,6 @@
 
 
     
-<h3>Acá lo puede ver en acción, http://alexdeploys.info</h3>
-<h4>Este ejemplo esta desplegado en Google Cloud en una VM Ubuntu con PHP7.4 FCM, Nginx y una instancia MySQL</h4>
-
 <br>
 
 
